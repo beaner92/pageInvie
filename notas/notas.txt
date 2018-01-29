@@ -1,0 +1,35 @@
+Responsive design
+
+	Patrones de diseño:
+		1. Mostly fluid. Cuadricula fluida autoajustable al tamaño de la pantalla
+
+		2. Column drop. Colocación de columnas de forma vertical
+
+		3. Layout shifter. Reajuste del diseño del sitio de acuerdo al ancho de la pantalla
+
+		4. Tiny tweaks. Pequeños cambios en el diseño, como ajustar el tamaño de la fuente, cambiar el tamaño de las imágenes o desplazar el contenido de diferentes maneras.
+
+		5. Off canvas. El contenido menos usado se coloca fuera de la pantalla y solo se muestra cuando el tamaño de la pantalla es lo suficientemente grande; en las pantallas más pequeñas, el contenido está solo a un clic de distancia.
+
+	Consideraciones de desarrollo:
+		Con smartphones se trabaja con Portrait -	Landscape (Vertical - Horizontal)
+		-Viewport.- área visible del navegador.
+
+	Unidades de medida:
+		*Absolutas:
+				-pixeles (px):
+		*Relativas:
+				-Porcentaje (%);
+				-Altura de fuente (em/La mitad del padre) -Root-em (rem/Responden al tamaño de fuente del elemento superior del DOM)
+				-Viewport Height (vh/Tamaño del navegador) -Viewport Width (vw/Tamaño del navegador)
+
+	Densidad de pixel / Retina display
+		Es diferente las medidas que tienen en la especificación a lo que soporta el dispositivo
+
+	Tab / Gestos
+
+	Estrategias
+		Graceful degradation.- Dispositivo más grande al más chico
+		Progressive enhancement.- Dispositivo más chico al más grande
+
+	Carga del sitio.- Debe ser un sitio ligero, que cargue muy rápido

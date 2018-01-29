@@ -5,9 +5,26 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet"  href="css/invie.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
-<body>
+<body class="precios">
 	<header id="header" class="header background">
+		<div class="contenedor">
+			<figure class="logotipo">
+				<img src="images/invie.png" srcset="images/invie.png 1px, images/invie2x.png" width="186" height="60" alt="Invie acustica" />
+			</figure>
+
+			<span class="burguer-button icon-menu" id="burguer-button"></span>
+			<nav class="menu" id="menu">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="index.html#guitarras">Guitarras</a></li>
+					<li><a href="precios.html">Precios</a></li>
+				</ul>
+			</nav>
+	</div>
+	</header>
+	<!-- <header id="header" class="header background">
 		<div class="contenedor">
 			<figure class="logotipo">
 				<img src="images/invie.png" width="186" height="60" alt="Invie acustica" />
@@ -20,13 +37,16 @@
 				</ul>
 			</nav>
 		</div>
-	</header>
+	</header> -->
 
 	<section class="tabla">
 		<div class="contenedor">
 			<table>
 				<thead>
 					<tr>
+						<th>Modelo</th>
+						<th>Precio</th>
+						<th>Descripción</th>
 						<th>Modelo</th>
 						<th>Precio</th>
 						<th>Descripción</th>
@@ -37,13 +57,22 @@
 						<td>Invie classic</td>
 						<td>$100000</td>
 						<td>Una guitarra muy pro</td>
-					</tr>
-					<tr>
 						<td>Invie classic</td>
 						<td>$100000</td>
 						<td>Una guitarra muy pro</td>
 					</tr>
 					<tr>
+						<td>Invie classic</td>
+						<td>$100000</td>
+						<td>Una guitarra muy pro</td>
+						<td>Invie classic</td>
+						<td>$100000</td>
+						<td>Una guitarra muy pro</td>
+					</tr>
+					<tr>
+						<td>Invie classic</td>
+						<td>$100000</td>
+						<td>Una guitarra muy pro</td>
 						<td>Invie classic</td>
 						<td>$100000</td>
 						<td>Una guitarra muy pro</td>
@@ -98,5 +127,38 @@
 			</form>
 		</div>
 	</footer>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
+	<script>
+		var consulta = window.matchMedia('(max-width: 500px');
+		var $burguerButton = document.getElementById('burguer-button');
+		var $menu = document.getElementById('menu');
+
+	  function toggleMenu(){
+				$menu.classList.toggle('menu-active');
+		};
+
+		consulta.addListener(mediaQuery);
+
+		function mediaQuery() {
+			if (consulta.matches) {
+				$burguerButton.addEventListener('touchstart', toggleMenu);
+
+			}else {
+				$burguerButton.removeEventListener('touchstart', toggleMenu);
+			}
+		}
+
+		mediaQuery();
+
+		//Lazy loading
+		var bLazy = new Blazy({
+			selector: "img"
+		});
+		/*$burguerButton.addEventListener('touchstart', toggleMenu);
+		 function toggleMenu(){
+			$menu.classList.toggle('menu-active');
+		};*/
+		//$menu.classList.toggle('active');
+	</script>
 </body>
 </html>

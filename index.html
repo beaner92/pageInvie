@@ -5,15 +5,17 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet"  href="css/invie.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 <body>
 	<section id="portada" class="portada background">
 		<header id="header" class="header contenedor">
 			<figure class="logotipo">
-				<img src="images/invie.png" width="186" height="60" alt="Invie acustica" />
+				<img src="images/invie.png" srcset="images/invie.png 1px, images/invie2x.png" width="186" height="60" alt="Invie acustica" />
 			</figure>
 
-			<nav class="menu">
+			<span class="burguer-button icon-menu" id="burguer-button"></span>
+			<nav class="menu" id="menu">
 				<ul>
 					<li><a href="index.html">Home</a></li>
 					<li><a href="#guitarras">Guitarras</a></li>
@@ -32,8 +34,16 @@
 
 	<section id="guitarras" class="guitarras contenedor">
 		<h2>Nuestras guitarras</h2>
+		<div class="video-demo-contenedor">
+			<div class="video-demo">
+				<div class="video-responsive-contenedor">
+					<iframe class="video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/R1dW8M4EqYY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+		<!-- <video src="video/320x240.ogg"></video> -->
 		<article class="guitarra">
-			<img class="derecha" src="images/invie-acustica.png" width="350" height="350" alt="Invie acustica" />
+			<img class="derecha" data-src="images/invie-acustica.png|images/invie-acustica2x.png" width="350" height="350" alt="Invie acustica" />
 			<div class="contenedor-guitarra-a">
 				<h3 class="title-b">Invie Acústica</h3>
 				<ol>
@@ -45,7 +55,7 @@
 		</article>
 
 		<article class="guitarra b">
-			<img class="izquierda" src="images/invie-classic.png" width="350" height="300" alt="Invie classic"/>
+			<img class="izquierda" data-src="images/invie-classic.png|images/invie-classic2x.png" width="350" height="300" alt="Invie classic"/>
 			<div class="contenedor-guitarra-b">
 				<h3 class="title-b">Invie Classis</h3>
 				<ol>
@@ -56,11 +66,17 @@
 			</div>
 		</article>
 	</section>
+<!--
+
+	SIRVE PARA PONER EL FOOTER FIJO SIN IMPORTAR SI HAY MAS DATOS O NO
+	<div class="content">
+		<div class="push"></div>
+	</div> -->
 
 	<footer class="footer">
 		<div class="contenedor">
 			<div class="contacto">
-				<img src="images/invie-white.png" alt="Logotipo blanco" />
+				<img data-src="images/invie-white.png|images/invie-white2x.png" alt="Logotipo blanco" />
 				<a href="tel:+52323242<"><strong>Teléfono</strong><span>323242</span></a>
 				<a href="mailto:contacto@invie.com"><strong>E-mail</strong><span>contacto@invie.com</span></a>
 			</div>
@@ -102,5 +118,53 @@
 			</form>
 		</div>
 	</footer>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+	<script>
+		var consulta = window.matchMedia('(max-width: 500px');
+		var $burguerButton = document.getElementById('burguer-button');
+		var $menu = document.getElementById('menu');
+
+	  function toggleMenu(){
+				$menu.classList.toggle('menu-active');
+		};
+
+		function showMenu(){
+				$menu.classList.add('menu-active');
+		};
+
+		function hiddenMenu(){
+				$menu.classList.remove('menu-active');
+		};
+
+
+		consulta.addListener(mediaQuery);
+
+		function mediaQuery() {
+			if (consulta.matches) {
+				$burguerButton.addEventListener('touchstart', toggleMenu);
+
+			}else {
+				$burguerButton.removeEventListener('touchstart', toggleMenu);
+			}
+		}
+
+		mediaQuery();
+
+		//Lazy loading
+		var bLazy = new Blazy({
+			selector: "img"
+		});
+		/*$burguerButton.addEventListener('touchstart', toggleMenu);
+		 function toggleMenu(){
+			$menu.classList.toggle('menu-active');
+		};*/
+		//$menu.classList.toggle('active');
+		/*Gestos con hammer*/
+		var $body = document.body;
+		var gestos = new Hammer($body);
+		gestos.on('swipeleft', hiddenMenu);
+		gestos.on('swiperight', showMenu);
+	</script>
 </body>
 </html>
